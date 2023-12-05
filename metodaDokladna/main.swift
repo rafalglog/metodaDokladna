@@ -1,3 +1,5 @@
+// praca zaliczeniowa na
+
 import Foundation
 
 func loadMatrixFromFile(filePath: String) -> [[Double]]? {
@@ -7,7 +9,7 @@ func loadMatrixFromFile(filePath: String) -> [[Double]]? {
 
         var matrix = [[Double]]()
         for row in rows {
-            let elements = row.components(separatedBy: ",")
+            let elements = row.components(separatedBy: " ")
                 .compactMap { Double($0) }
             if !elements.isEmpty {
                 matrix.append(elements)
@@ -55,7 +57,7 @@ func gaussElimination(_ augmentedMatrix: inout [[Double]]) -> [Double]? {
 }
 
 // Example usage with loading data from a file with comma separators
-if let filePath = Bundle.main.path(forResource: "zadanie", ofType: "txt") {
+if let filePath = Bundle.main.path(forResource: "test", ofType: "txt") {
     if var systemOfEquations = loadMatrixFromFile(filePath: filePath) {
         if let solution = gaussElimination(&systemOfEquations) {
             print("Rozawiązanie: \(solution)")
